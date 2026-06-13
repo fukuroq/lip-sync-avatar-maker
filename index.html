@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>口パクアバターメーカー - マイクで口を動かそう</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>口パクアバターメーカー</h1>
+      <p>顔の画像をアップロードして、マイクで声を出すと口がリアルタイムに動きます</p>
+      
+      <div class="upload-area">
+        <input type="file" id="image-input" accept="image/*" />
+        <label for="image-input" class="upload-label">
+          📸 画像を選択する
+        </label>
+        <div class="upload-options">
+          <label class="checkbox-label">
+            <input type="checkbox" id="remove-bg-checkbox" />
+            <span>背景を透過する（AI処理 / 初回のみ40MBダウンロード）</span>
+          </label>
+        </div>
+      </div>
+
+      <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <p id="loading-text">顔を認識中...</p>
+      </div>
+
+      <div id="control-area" class="control-area hidden">
+        <div id="adjust-controls" class="adjust-controls hidden">
+          <p class="adjust-instruction">四角をドラッグして位置・サイズを調整できます</p>
+          <div class="rotation-control">
+            <label for="rotation-slider">回転角度: <span id="rotation-value">0°</span></label>
+            <input type="range" id="rotation-slider" min="-45" max="45" value="0" />
+          </div>
+          <div class="zoom-control">
+            <label for="zoom-slider">拡大縮小: <span id="zoom-value">100%</span></label>
+            <input type="range" id="zoom-slider" min="50" max="200" value="100" />
+          </div>
+          <button id="start-anim-btn" class="btn-primary">🎬 口パク開始</button>
+        </div>
+
+          <div id="controls" class="controls hidden">
+          <button id="mic-btn" class="btn-primary">🎤 マイクをONにする</button>
+          <div id="mic-status" class="mic-status"></div>
+          <div id="volume-meter" class="volume-meter">
+            <div id="volume-bar" class="volume-bar"></div>
+          </div>
+          <button id="back-to-adjust-btn" class="btn-secondary">↩️ 位置を調整する</button>
+        </div>
+      </div>
+
+      <div id="background-controls" class="background-controls hidden">
+        <button id="green-back-btn" class="btn-secondary">🟩 グリーンバックON/OFF</button>
+      </div>
+
+      <div id="result-area" class="result-area hidden">
+        <canvas id="canvas"></canvas>
+      </div>
+
+      <div id="instructions" class="instructions">
+        <h3>使い方</h3>
+        <ol>
+          <li>顔が写っている画像をアップロード</li>
+          <li>「マイクをONにする」をクリックして許可</li>
+          <li>声を出すと、画像の口が人形劇風に動きます</li>
+        </ol>
+      </div>
+
+      <footer class="footer">
+        <div class="footer-content">
+          <p class="footer-license">
+            © 口パクアバターメーカー | <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank">AGPL v3</a> ライセンス
+          </p>
+          <p class="footer-libraries">
+            <span>使用ライブラリ:</span>
+            <a href="https://mediapipe.dev/" target="_blank">MediaPipe</a> (Apache-2.0) |
+            <a href="https://github.com/imgly/background-removal-js" target="_blank">@imgly/background-removal</a> (AGPL) |
+            <a href="https://onnxruntime.ai/" target="_blank">ONNX Runtime</a> (MIT) |
+            <a href="https://vitejs.dev/" target="_blank">Vite</a> (MIT)
+          </p>
+        </div>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
