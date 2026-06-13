@@ -76,18 +76,6 @@ npm run build
 npm run preview
 ```
 
-## デプロイ
-
-### Cloudflare Pages
-
-```bash
-# ビルド
-npm run build
-
-# dist/フォルダをデプロイ
-# Cloudflare Pagesダッシュボードでdistフォルダをアップロード
-```
-
 ## 注意事項
 
 - **初回背景除去時**: 40MBのAIモデルをダウンロードします。通信環境に注意してください。
