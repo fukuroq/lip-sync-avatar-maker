@@ -4,7 +4,7 @@
 
 ## デモ
 
-**[ライブデモ](https://lip-sync-avatar-maker.fukurou-bbb-23.workers.dev)**（Cloudflare Pages）
+**[ライブデモ](https://lip-sync-avatar-maker.pages.dev)**（Cloudflare Pages）
 
 ## 機能
 
